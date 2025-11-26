@@ -1,0 +1,80 @@
+B. Part 2: Essay Questions (2.5 Grade):
+
+1. What is the difference between forEach and for...of? When would you use each? (0.5 Grade)
+
+forEach :
+بتعمل loop على الـ array، وبيكون فيها callback function بتتنفذ على كل عنصر
+الـ forEach مفيهاش return وبالتالي بترجع undefined
+كمان مبنستخدمش فيها break أو continue، ولا ينفع نوقف التنفيذ لأنها لازم تمر على كل العناصر اللي في الـ list
+وبرضه مبتنفعش تُستخدم مع objects أو strings أو sets أو maps
+
+arr.forEach((item) => console.log(item));
+
+
+for...of : 
+بتقوم بنفس دور الـ for loop، وبتعمل loop على كل العناصر داخل الـ array بس على القيم مش الـ index
+وكمان بتسمح باستخدام continue و break عادي
+
+for (let item of arr) {
+  console.log(item);
+}
+
+forEach
+بستخدمها لما أكون محتاجة أنفّذ function معيّنة على كل عنصر من عناصر الـ array
+ومن غير ما أوقف الـ loop، ومن غير ما أستنى إنها ترجع لي بقيمة لأنها أصلًا مبتعملش return
+
+for...of
+بستخدمها لما أحتاج أعمل loop على الـ array
+وفي نفس الوقت ممكن أحتاج أستخدم break أو continue علشان أوقف أو أتخطّى جزء من الـ loop
+/******************************************************************************************************************************************/
+2. What is hoisting and what is the Temporal Dead Zone (TDZ)? Explain with examples. (0.5 Grade)
+Hoisting :
+الـ Hoisting هو عملية رفع (declarations) إلى أعلى الـ scope سواء كان الـ scope (global) أو داخل function
+متغيرات var بيتم عمل hoisting لها، وبالتالي ممكن الوصول ليها قبل سطر تعريفها، لكن قيمتها بتكون undefined لحد ما يوصل لمرحلة (assignment)
+
+Example:
+console.log(y);  //undefined
+var y =3;
+
+
+Temporal Dead Zone (TDZ):
+المتغيرات المعرّفة بـ let و const لا يتم عمل hoisting ليها 
+اسمهم بيتسجل من بدايه ال scopeو لكن قيمتها مش جاهزه لحد ما يوصل ل سطر تعريفها
+اى محاوله ل استخدام هذا المتغير خلال فتره الTDZ هيطلع ERROR 
+Example:
+console.log(x); // Cannot access 'x' before initialization
+let x = 5;
+
+
+/******************************************************************************************************************************************/
+3. What are the main differences between == and ===? (0.5 Grade)
+==   Compares values only, without checking the data type.
+===  Compares both value and data type, and returns true only if both match.
+
+/******************************************************************************************************************************************/
+4. Explain how try-catch works and why it is important in async operations. (0.5 Grade)
+
+try-catch
+يتم استخدامه لما يكون فيه جزء من الكود محتاج تنفيذه، لكن ممكن يحصل فيه خطأ (Error) أثناء التشغيل
+الكود اللي جوه try بيتنفذ طبيعي
+لو حصل أي Error أثناء تنفيذ الكود داخل الـ try يتم تخطيه وينفذ الكود الموجود داخل catch فورًا
+
+بيتم استخدامها كتير فى الasync operations
+لما نعمل fetch لبيانات من API، أو نقرا ملفات معينة، ممكن يحصل خطأ زي:
+الملف مش موجود
+الـ API بيرجع error
+في الحالة دي:
+الكود اللي جوه try هيتنفذ لو كله تمام
+لو حصل أي خطأ، التنفيذ هيقف وينفذ الكود اللي جوه catch فورًا، علشان تتعاملي مع الخطأ (مثلاً تطبعي رسالة للمستخدم)
+/******************************************************************************************************************************************/
+
+5. What’s the difference between type conversion and coercion? Provide examples of each. (0.5 Grade)
+
+Type Conversion: This is manual type change that the developer does explicitly.
+Example:
+Number("123") + 7 // 130
+
+Type Coercion: JavaScript automatically performs the type conversion without you asking for it.
+Examples:
+console.log("-1" == null); // false  
+console.log(undefined == null); // true
