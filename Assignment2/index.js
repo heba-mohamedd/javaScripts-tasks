@@ -106,9 +106,7 @@ fs.writeFile(path.resolve("./async.txt"), "Async save", (err) => {
 // 16. Check if a directory exists. (0.5 Grade)
 // • Input Example: "./notes.txt"
 // • Output Example: true
-if (fs.existsSync(path.resolve("./notes.txt"))) {
-  console.log("true");
-} else console.log("this file is not exist");
+console.log(fs.existsSync(path.resolve("./notes.txt")));
 
 // 17. Write a function that returns the OS platform and CPU architecture. (0.5 Grade)
 // • Output Example: {Platform: “win32”, Arch: “x64”}
